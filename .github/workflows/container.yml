@@ -14,10 +14,13 @@ defaults:
 
 jobs:
   build:
+    env:
+      key1: ${{secrets.AWS_S3_BUCKET_NAME}}
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - run: echo $key1
       - run: npm install
       - run: npm run build
 
